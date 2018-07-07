@@ -2,7 +2,7 @@
   "name": "react-router-demos",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://deeplydiligent.github.io/ITDS-Coding-Challenge",
+  "homepage": "https://itd-coding-challenge.firebaseapp.com/",
   "dependencies": {
     "firebase": "^5.2.0",
     "react": "^16.1.1",
