@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="container">
-                    <h1>ITD Coding Challenge</h1>
+                    <h1>ITDS Coding Challenge</h1>
                     <h5>Submission from Deep Bhattacharyya</h5>
                     <hr/>
                     <Home/>

@@ -119,7 +119,7 @@ class ListView extends Component {
                                                 <p>id: {item.id}</p>
                                                 <p>text: {item.text}</p>
                                                 <p>{this.dateTime(item.timeStamp)}</p>
-                                                <Seconds myKey={item.key} time={item.timeStamp} database={this.props.database}/>
+                                                <Seconds myKey={item.key} time={item.timeStamp} cd={item.time} database={this.props.database}/>
                                             </div>
                                         )}
                                     </Draggable>
@@ -137,7 +137,11 @@ class Seconds extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        this.state.seconds = ((this.props.time-Date.now()+30000)/1000);
+        this.cd = 30000;
+        if (this.props.cd){
+            this.cd = this.props.cd*1000;
+        }
+        this.state.seconds = ((this.props.time-Date.now()+this.cd)/1000);
         console.log(this.props.timeStamp);
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
@@ -152,7 +156,7 @@ class Seconds extends Component {
     }
 
     countDown(){
-        this.setState({seconds: ((this.props.time-Date.now()+30000)/1000)})
+        this.setState({seconds: ((this.props.time-Date.now()+this.cd)/1000)})
         if (this.state.seconds <= 0){
             this.setState({seconds: 0})
             clearInterval(this.timer);

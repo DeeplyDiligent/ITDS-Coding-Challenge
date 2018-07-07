@@ -26,10 +26,12 @@ class Home extends Component {
       firebase.database().ref('messages/').push({
         id: id,
         text: document.getElementById("writeToDb").value,
-        timeStamp : Date.now()
+        timeStamp : Date.now(),
+        time: document.getElementById("time").value
       });
       this.id+=1;
       document.getElementById("writeToDb").value = "";
+      document.getElementById("time").value = "";
     }
 
     render() {
@@ -40,7 +42,8 @@ class Home extends Component {
               <p>Store This:&emsp;</p>
               </div>
               <div style={{display:"flex", marginBottom:"20px"}}>
-              <input id="writeToDb" className="form-control" onKeyPress={(e) => {(e.key === 'Enter' ? this.commit(this.id) : null)}}></input>
+              <input placeholder="Data To Store" id="writeToDb" className="form-control" onKeyPress={(e) => {(e.key === 'Enter' ? this.commit(this.id) : null)}}></input>
+              <input style={{marginLeft:"10px"}} placeholder="Time (default 30)" id="time" className="form-control" onKeyPress={(e) => {(e.key === 'Enter' ? this.commit(this.id) : null)}}></input>
               <button onClick={()=>{this.commit(this.id)}} className="btn btn-light" style={{marginLeft:"10px"}}>Commit</button>
               </div>
             </div>
